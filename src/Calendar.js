@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
 
-import { Flex, Box } from 'reflexbox';
-
 import Day from './Day'
 
 class Calendar extends Component {
 
+  constructor() {
+    super()
+
+    this.themes = [
+      {background: '#ffffff', border: '#f000000'},
+    ]
+  }
+
   render() {
     return (
       <div className="calendar">
-        <Flex wrap justify="space-around" align="flex-start">
-          {this.props.days.map((elm)=> 
-          <Box flex col={12} sm={6} md={4} lg={3} p={2} key={elm.id}>
-            <Day day={elm.day} />
-          </Box>
-          )}
-        </Flex>
+        {this.props.days.map((elm)=> 
+          <Day id={elm.id} day={elm.day} />
+        )}
       </div>
     )
   }

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import { Flex, withReflex  } from 'reflexbox';
-
 class Day extends Component {
 
   constructor() {
@@ -17,12 +15,10 @@ class Day extends Component {
   render() {
     return (
       <div className="day dashed" onClick={this.handleOnClick}>
-        <Flex column justify="center" align="center">
-          <span>{this.props.day}</span>
-        </Flex>
+        <span>{this.props.day}</span>
       </div>
     )
   }
 }
 
-export default withReflex()(Day);
+export default Day;
