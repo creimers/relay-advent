@@ -11,15 +11,12 @@ class Calendar extends Component {
   constructor(props) {
     super(props)
 
-    this.themes = [
-      {background: '#ffffff', border: '#f00000'},
-    ]
-
     this.toggleDialog = this.toggleDialog.bind(this)
     this.openModal = this.openModal.bind(this)
 
     this.state = {
-      dialogIsOpen: false
+      dialogIsOpen: false,
+      activeDay: {}
     }
   }
 
@@ -28,16 +25,17 @@ class Calendar extends Component {
   }
 
   openModal(day) {
-    console.log('open that modal')
+    this.setState({activeDay: day})
     this.toggleDialog()
   }
 
   render() {
+    let dialogType = window.innerWidth <= 960 ? "large" : "normal"
     return (
       <div>
         <div className={styles.calendar}>
           {this.props.days.map((elm)=> 
-          <Day key={elm.id} day={elm.day} onClickCallback={this.openModal} imageSmallUrl={elm.imageSmallUrl}/>
+          <Day key={elm.id} day={elm} onClickCallback={this.openModal}/>
           )}
         </div>
 
@@ -45,10 +43,12 @@ class Calendar extends Component {
           active={this.state.dialogIsOpen}
           onEscKeyDown={this.toggleDialog}
           onOverlayClick={this.toggleDialog}
+          type={dialogType}
         >
-          <p>Good day, sir</p>
-          </Dialog>
-          </div>
+          <img role="presentation" src={this.state.activeDay.imageLargeUrl} className={styles.dialogImage}/>
+        </Dialog>
+
+      </div>
     )
   }
 }

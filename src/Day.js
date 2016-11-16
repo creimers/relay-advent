@@ -22,7 +22,7 @@ class Day extends Component {
     let borderStyles = ['solid', 'dashed', 'dotted']
 
     this.state = {
-      isOpen: this.isOpen(props.day),
+      isOpen: this.isOpen(props.day.day),
       borderStyle: borderStyles[Math.floor(Math.random() * borderStyles.length)],
       dialogIsOpen: false
     }
@@ -52,7 +52,7 @@ class Day extends Component {
   }
 
   handleOnClick() {
-    if (this.canOpen(this.props.day)) {
+    if (this.canOpen(this.props.day.day)) {
       this.setState({isOpen: true})
     }
     else {
@@ -60,8 +60,6 @@ class Day extends Component {
     }
 
     if (this.state.isOpen) {
-      //console.log('open modal')
-      //this.toggleDialog()
       this.props.onClickCallback(this.props.day)
     }
   }
@@ -78,13 +76,13 @@ class Day extends Component {
     let style = {}
 
     if (this.state.isOpen) {
-      style.background = `url(${this.props.imageSmallUrl})`
+      style.background = `url(${this.props.day.imageSmallUrl})`
       style.backgroundSize = 'cover'
     }
 
     return (
       <div className={classes} style={style} onClick={this.handleOnClick}>
-        <span>{this.props.day}</span>
+        <span>{this.props.day.day}</span>
       </div>
     )
   }
