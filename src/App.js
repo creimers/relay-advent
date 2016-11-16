@@ -3,6 +3,9 @@ import styles from './App.scss';
 
 import Calendar from './Calendar'
 
+import Footer from './Footer'
+
+
 class App extends Component {
   constructor() {
     super()
@@ -31,6 +34,7 @@ class App extends Component {
     return (
       <div className={styles.App}>
         <Calendar days={this.days.concat(this.remainingDays)}/>
+        <Footer />
       </div>
     );
   }
