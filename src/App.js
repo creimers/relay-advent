@@ -11,23 +11,8 @@ class App extends Component {
       {
         day: '1',
         id: '1',
+        imageSmallUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/e2/Stamps_of_Germany_%28DDR%29_1980%2C_MiNr_2499.jpg'
       },
-      {
-        day: '2',
-        id: '2',
-      },
-      {
-        day: '3',
-        id: '3',
-      },
-      {
-        day: '4',
-        id: '4',
-      },
-      {
-        day: '5',
-        id: '5',
-      }
     ]
     let range = n => Array.from(Array(n).keys())
     let remainingDays = range(24 - this.days.length)
@@ -35,6 +20,7 @@ class App extends Component {
       return {
         day: this.days.length + index + 1,
         id: this.days.length + index + 1,
+        imageSmallUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/e2/Stamps_of_Germany_%28DDR%29_1980%2C_MiNr_2499.jpg'
       }
     })
   }

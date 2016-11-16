@@ -16,7 +16,7 @@ class Calendar extends Component {
     return (
       <div className="calendar">
         {this.props.days.map((elm)=> 
-          <Day key={elm.id} day={elm.day} />
+          <Day key={elm.id} day={elm.day} imageSmallUrl={elm.imageSmallUrl}/>
         )}
       </div>
     )

@@ -1,5 +1,6 @@
 .App {
   /*text-align: center;*/
+  font-family: 'Open-Sans', sans-serif;
 }
 
 .calendar{
@@ -18,13 +19,18 @@ $dayMargin: 10px;
   cursor: pointer;
   border-color: #ba3457;
   color: #ba3457;
+  text-shadow: 4px 4px 2px rgba(150, 150, 150, 0.28);
+  font-size: 8rem;
   border-width: .5rem;
   background: #02d892;
-  font-size: 5rem;
 
   width: calc(33.333333vw - #{2 * $dayMargin});
   min-height: calc(33.333333vw - #{2 * $dayMargin});
   margin: $dayMargin;
+}
+
+.day.open{
+  background-color: transparent;
 }
 
 .dashed{
