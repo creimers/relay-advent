@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import Relay from 'react-relay';
+
 import Day from './Day'
 
 import Dialog from 'react-toolbox/lib/dialog';
@@ -13,6 +15,7 @@ class Calendar extends Component {
   constructor(props) {
     super(props)
 
+    console.log('calendar props', props)
     this.toggleDialog = this.toggleDialog.bind(this)
     this.toggleSnackbar = this.toggleSnackbar.bind(this)
     this.openModal = this.openModal.bind(this)
@@ -39,17 +42,11 @@ class Calendar extends Component {
 
   render() {
     let dialogType = window.innerWidth <= 960 ? "large" : "normal"
+    console.log(this.props.store.edges[0].node.days.edges)
     return (
       <div>
         <div className={styles.calendar}>
-          {this.props.days.map((elm)=> 
-          <Day
-            key={elm.id}
-            day={elm}
-            openModalCallback={this.openModal}
-            showSnackbarCallback={this.toggleSnackbar}
-          />
-          )}
+          <Day store={this.props.store.edges[0].node} />  
         </div>
 
         <Dialog
@@ -73,5 +70,31 @@ class Calendar extends Component {
     )
   }
 }
+
+Calendar = Relay.createContainer(Calendar, {
+
+  fragments: {
+    store: () => Relay.QL`
+      fragment C on CalendarNodeConnection {
+        pageInfo {
+          hasNextPage
+          hasPreviousPage
+          startCursor
+          endCursor
+        }
+        edges {
+          node{
+            id
+            uuid
+            name
+            days(first:10) {
+              ${Day.getFragment('days')}
+            }
+          }
+        }
+      }
+    `
+  }
+})
 
 export default Calendar;

@@ -1,9 +1,35 @@
 import React, { Component } from 'react';
+
+import Relay from 'react-relay';
+
 import styles from './App.scss';
 
 import Calendar from './Calendar'
 
 import Footer from './Footer'
+
+class CalendarRoute extends Relay.Route {
+  static routeName = 'CalendarRoute'
+  static queries = {
+    store: Component => {
+
+      return Relay.QL`
+      query {
+        calendars(uuid: "ZuHHPJXi7QgVJuwTcG4kBg") {
+          ${Component.getFragment('store')}
+        }
+      }
+    `},
+  };
+
+  static params = {
+    calendarUUID: "ZuHHPJXi7QgVJuwTcG4kBg"
+  }
+}
+
+Relay.injectNetworkLayer(
+  new Relay.DefaultNetworkLayer('http://localhost:8000/graphql')
+);
 
 
 class App extends Component {
@@ -33,7 +59,9 @@ class App extends Component {
   render() {
     return (
       <div className={styles.App}>
-        <Calendar days={this.days.concat(this.remainingDays)}/>
+        <Relay.RootContainer
+          Component={Calendar}
+          route={new CalendarRoute()} />
         <Footer />
       </div>
     );

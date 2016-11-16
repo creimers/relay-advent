@@ -4,6 +4,8 @@ import moment from 'moment'
 
 import React, { Component } from 'react'
 
+import Relay from 'react-relay';
+
 import styles from './App.scss'
 
 class Day extends Component {
@@ -87,5 +89,28 @@ class Day extends Component {
     )
   }
 }
+
+Day = Relay.createContainer(Day, {
+  fragments: {
+    days: () => Relay.QL`
+      fragment D on DayNodeConnection {
+        pageInfo {
+          hasNextPage
+          hasPreviousPage
+          startCursor
+          endCursor
+        }
+        edges{
+          node{
+            id
+            day
+            imageSmallUrl
+            imageLargeUrl
+          }
+        }
+      }
+    `
+  }
+})
 
 export default Day;
