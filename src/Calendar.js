@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import Day from './Day'
 
+import styles from './App.scss'
+
 class Calendar extends Component {
 
   constructor(props) {
@@ -14,7 +16,7 @@ class Calendar extends Component {
 
   render() {
     return (
-      <div className="calendar">
+      <div className={styles.calendar}>
         {this.props.days.map((elm)=> 
           <Day key={elm.id} day={elm.day} imageSmallUrl={elm.imageSmallUrl}/>
         )}
