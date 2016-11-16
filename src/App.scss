@@ -1,11 +1,13 @@
 .App {
-  /*text-align: center;*/
   font-family: 'Open-Sans', sans-serif;
 }
 
 .calendar{
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
+  width: 80vw;
+  margin: 0 auto;
 }
 
 
@@ -24,9 +26,11 @@ $dayMargin: 10px;
   border-width: .5rem;
   background: #02d892;
 
-  width: calc(33.333333vw - #{2 * $dayMargin});
-  min-height: calc(33.333333vw - #{2 * $dayMargin});
-  margin: $dayMargin;
+  /*width: calc(33.333333vw - #{2 * $dayMargin});*/
+  /*min-height: calc(33.333333vw - #{2 * $dayMargin});*/
+  /*margin: $dayMargin;*/
+  width: 25vw;
+  height: 25vw;
 }
 
 .day.open{

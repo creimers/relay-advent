@@ -4,8 +4,8 @@ import Day from './Day'
 
 class Calendar extends Component {
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.themes = [
       {background: '#ffffff', border: '#f00000'},
