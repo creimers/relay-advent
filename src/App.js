@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.scss';
+import styles from './App.scss';
 
 import Calendar from './Calendar'
 
@@ -29,7 +29,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className={styles.App}>
         <Calendar days={this.days.concat(this.remainingDays)}/>
       </div>
     );

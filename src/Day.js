@@ -56,11 +56,11 @@ class Day extends Component {
       this.setState({isOpen: true})
     }
     else {
-      console.log('Geduld!')
+      this.props.showSnackbarCallback()
     }
 
     if (this.state.isOpen) {
-      this.props.onClickCallback(this.props.day)
+      this.props.openModalCallback(this.props.day)
     }
   }
 
