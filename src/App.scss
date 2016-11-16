@@ -3,21 +3,24 @@
 }
 
 .calendar{
+  box-sizing: border-box;
+
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   width: 80vw;
   margin: 0 auto;
+  padding: 0 15px;
 }
 
 
-$dayMargin: 10px;
 .day{
+  box-sizing: border-box;
+
   display: flex;
   justify-content: center;
   align-items: center;
 
-  box-sizing: border-box;
   cursor: pointer;
   border-color: #ba3457;
   color: #ba3457;
@@ -26,11 +29,9 @@ $dayMargin: 10px;
   border-width: .5rem;
   background: #02d892;
 
-  /*width: calc(33.333333vw - #{2 * $dayMargin});*/
-  /*min-height: calc(33.333333vw - #{2 * $dayMargin});*/
-  /*margin: $dayMargin;*/
   width: 25vw;
   height: 25vw;
+  margin: 15px 0px;
 }
 
 .day.open{
@@ -48,3 +49,106 @@ $dayMargin: 10px;
 .dotted{
   border-style: dotted;
 }
+
+
+/******************************************************************/
+/*from https://gist.github.com/eyecatchup/9e847b05f15efccc1a29*/
+/******************************************************************/
+
+/* mobile-small */
+@media all and (min-width: 0) and (max-width: 360px) and (orientation: portrait) {
+  .calendar {
+    width: 100vw;
+  }
+  .day {
+    width: 100vw;
+    height: 100vw;
+    margin: 15px 0px;
+  }
+}
+
+/* mobile-large */
+@media all and (min-width: 361px) and (orientation: portrait) {
+  .calendar {
+    width: 100vw;
+  }
+  .day {
+    width: 100vw;
+    height: 100vw;
+    margin: 15px 0px;
+  }
+}
+/* mobile-small-landscape */
+@media all and (min-width: 0) and (max-width: 480px) and (orientation: landscape) {
+
+  .calendar {
+    width: 100vw;
+  }
+  .day {
+    width: 100vw;
+    height: 100vw;
+    margin: 15px 0px;
+  }
+}
+/* mobile-large-landscape */
+@media all and (min-width: 481px) and (orientation: landscape) {
+  /*.calendar {*/
+    /*width: 100vw;*/
+  /*}*/
+  /*.day {*/
+    /*width: 45vw;*/
+    /*height: 45vw;*/
+    /*margin: 15px 0px;*/
+  /*}*/
+}
+/* tablet-small-landscape */
+@media all and (min-width: 600px) and (max-width: 960px) and (orientation: landscape) {
+  .calendar {
+    width: 100vw;
+  }
+  .day {
+    width: 45vw;
+    height: 45vw;
+    margin: 15px 0px;
+  }
+}
+/* tablet-large-landscape */
+@media all and (min-width: 961px) and (orientation: landscape) { }
+/* tablet-small */
+@media all and (min-width: 600px) and (orientation: portrait) {
+  .calendar {
+    width: 100vw;
+  }
+  .day {
+    width: 45vw;
+    height: 45vw;
+    margin: 15px 0px;
+  }
+}
+/* tablet-large */
+@media all and (min-width: 601px) and (max-width: 840px) and (orientation : portrait) {
+  .calendar {
+    width: 100vw;
+  }
+  .day {
+    width: 45vw;
+    height: 45vw;
+    margin: 15px 0px;
+  }
+}
+/* desktop-x-small-landscape */
+@media all and (min-width: 0) and (max-width: 480px) and (orientation: landscape) { }
+/* desktop-x-small */
+@media all and (min-width: 0) and (max-width: 480px) and (max-aspect-ratio: 4/3) { }
+/* desktop-small-landscape */
+@media all and (min-width: 481px) and (max-width: 840px) and (orientation: landscape) { }
+/* desktop-small */
+@media all and (min-width: 481px) and (max-width: 840px) and (max-aspect-ratio: 4/3) { }
+/* desktop-medium-landscape */
+@media all and (min-width: 841px) and (max-width: 1280px) and (orientation: landscape) { }
+/* desktop-medium */
+@media all and (min-width: 841px) and (max-width: 1280px) and (max-aspect-ratio: 4/3) { }
+/* desktop-large */
+@media all and (min-width: 1281px) and (max-width: 1600px) { }
+/* desktop-xlarge */
+@media all and (min-width: 1601px) and (max-width: 1920px) { }
