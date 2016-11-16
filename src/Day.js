@@ -1,7 +1,5 @@
 import classNames from 'classnames';
 
-import Dialog from 'react-toolbox/lib/dialog';
-
 import moment from 'moment'
 
 import React, { Component } from 'react'
@@ -62,8 +60,9 @@ class Day extends Component {
     }
 
     if (this.state.isOpen) {
-      console.log('open modal')
-      this.toggleDialog()
+      //console.log('open modal')
+      //this.toggleDialog()
+      this.props.onClickCallback(this.props.day)
     }
   }
 
@@ -84,19 +83,8 @@ class Day extends Component {
     }
 
     return (
-      <div>
-        <div className={classes} style={style} onClick={this.handleOnClick}>
-          <span>{this.props.day}</span>
-        </div>
-
-        <Dialog
-          active={this.state.dialogIsOpen}
-          onEscKeyDown={this.toggleDialog}
-          onOverlayClick={this.toggleDialog}
-          title="he"
-        >
-          <p>Good day, sir</p>
-        </Dialog>
+      <div className={classes} style={style} onClick={this.handleOnClick}>
+        <span>{this.props.day}</span>
       </div>
     )
   }
