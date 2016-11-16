@@ -2,19 +2,29 @@
   /*text-align: center;*/
 }
 
+.calendar{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+$dayMargin: 10px;
 .day{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  box-sizing: border-box;
   cursor: pointer;
-  width: 100%;
-  padding-bottom: 50%;
   border-color: #ba3457;
   color: #ba3457;
   border-width: .5rem;
   background: #02d892;
   font-size: 5rem;
 
-  span{
-    padding-top: 45%;
-  }
+  width: calc(33.333333vw - #{2 * $dayMargin});
+  min-height: calc(33.333333vw - #{2 * $dayMargin});
+  margin: $dayMargin;
 }
 
 .dashed{

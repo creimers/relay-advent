@@ -8,7 +8,7 @@ class Calendar extends Component {
     super()
 
     this.themes = [
-      {background: '#ffffff', border: '#f000000'},
+      {background: '#ffffff', border: '#f00000'},
     ]
   }
 
@@ -16,7 +16,7 @@ class Calendar extends Component {
     return (
       <div className="calendar">
         {this.props.days.map((elm)=> 
-          <Day id={elm.id} day={elm.day} />
+          <Day key={elm.id} day={elm.day} />
         )}
       </div>
     )
