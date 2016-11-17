@@ -13,6 +13,7 @@ class Day extends Component {
   constructor(props) {
     super(props)
 
+    console.log('Day', props)
     this.handleOnClick = this.handleOnClick.bind(this)
     this.dayToMoment = this.dayToMoment.bind(this)
     this.isOpen = this.isOpen.bind(this)
@@ -31,6 +32,7 @@ class Day extends Component {
   }
 
   dayToMoment(day){
+    day = day.split('_')[1]
     let now = moment()
     let dayString = day.toString().length === 1? "0" + day : day
     let dayAsString = `${now.year()}-${this.month}-${dayString}`
@@ -84,7 +86,7 @@ class Day extends Component {
 
     return (
       <div className={classes} style={style} onClick={this.handleOnClick}>
-        <span>{this.props.day.day}</span>
+        <span>{this.props.day.day.split('_')[1]}</span>
       </div>
     )
   }
@@ -92,22 +94,13 @@ class Day extends Component {
 
 Day = Relay.createContainer(Day, {
   fragments: {
-    days: () => Relay.QL`
-      fragment D on DayNodeConnection {
-        pageInfo {
-          hasNextPage
-          hasPreviousPage
-          startCursor
-          endCursor
-        }
-        edges{
-          node{
-            id
-            day
-            imageSmallUrl
-            imageLargeUrl
-          }
-        }
+    day: () => Relay.QL`
+      fragment DAY on DayNode {
+        id
+        day
+        imageSource
+        imageLargeUrl
+        imageSmallUrl
       }
     `
   }

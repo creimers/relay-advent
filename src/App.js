@@ -8,25 +8,6 @@ import Calendar from './Calendar'
 
 import Footer from './Footer'
 
-class CalendarRoute extends Relay.Route {
-  static routeName = 'CalendarRoute'
-  static queries = {
-    store: Component => {
-
-      return Relay.QL`
-      query {
-        calendars(uuid: "ZuHHPJXi7QgVJuwTcG4kBg") {
-          ${Component.getFragment('store')}
-        }
-      }
-    `},
-  };
-
-  static params = {
-    calendarUUID: "ZuHHPJXi7QgVJuwTcG4kBg"
-  }
-}
-
 Relay.injectNetworkLayer(
   new Relay.DefaultNetworkLayer('http://localhost:8000/graphql')
 );
@@ -36,6 +17,7 @@ class App extends Component {
   constructor() {
     super()
 
+    // TODO: remove all this.
     this.days = [
       {
         day: '1',
@@ -57,15 +39,35 @@ class App extends Component {
   }
 
   render() {
+    console.log('App', this.props)
     return (
       <div className={styles.App}>
-        <Relay.RootContainer
-          Component={Calendar}
-          route={new CalendarRoute()} />
+        <Calendar calendar={this.props.store.edges[0].node} />
         <Footer />
       </div>
     );
   }
 }
+
+App = Relay.createContainer(App, {
+
+  fragments: {
+    store: () => Relay.QL`
+      fragment C on CalendarNodeConnection {
+        pageInfo {
+          hasNextPage
+          hasPreviousPage
+          startCursor
+          endCursor
+        }
+        edges {
+          node{
+            ${Calendar.getFragment('calendar')}
+          }
+        }
+      }
+    `
+  }
+})
 
 export default App;
