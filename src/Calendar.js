@@ -15,7 +15,6 @@ class Calendar extends Component {
   constructor(props) {
     super(props)
 
-    console.log('Calendar', props)
     this.toggleDialog = this.toggleDialog.bind(this)
     this.toggleSnackbar = this.toggleSnackbar.bind(this)
     this.openModal = this.openModal.bind(this)

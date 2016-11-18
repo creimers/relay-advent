@@ -13,7 +13,6 @@ class Day extends Component {
   constructor(props) {
     super(props)
 
-    console.log('Day', props)
     this.handleOnClick = this.handleOnClick.bind(this)
     this.dayToMoment = this.dayToMoment.bind(this)
     this.isOpen = this.isOpen.bind(this)

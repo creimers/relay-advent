@@ -29,6 +29,6 @@ let uuid = window.location.pathname.split('/')[1]
 ReactDOM.render(
   <Relay.RootContainer
     Component={App}
-    route={new AppRoute({uuid: uuid})} />,
+    route={new AppRoute({uuid: uuid !== ''? uuid : undefined})} />,
   document.getElementById('root')
 );

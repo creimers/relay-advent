@@ -39,10 +39,16 @@ class App extends Component {
   }
 
   render() {
-    console.log('App', this.props)
+    let body
+    if (this.props.store && this.props.store.edges.length) {
+      body = <Calendar calendar={this.props.store.edges[0].node} />
+    }
+    else {
+      body = <div className={styles.wrong}><h1>You've got the wrong guy!</h1></div>
+    }
     return (
       <div className={styles.App}>
-        <Calendar calendar={this.props.store.edges[0].node} />
+        {body}
         <Footer />
       </div>
     );
