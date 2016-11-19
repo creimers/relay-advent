@@ -8,6 +8,7 @@ var InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 var WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 var getClientEnvironment = require('./env');
 var paths = require('./paths');
+var path = require('path')
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -78,7 +79,8 @@ module.exports = {
     alias: {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
-      'react-native': 'react-native-web'
+      'react-native': 'react-native-web',
+      'config': path.join(paths.appSrc, 'config/dev.js'),
     }
   },
   
@@ -107,7 +109,7 @@ module.exports = {
           cacheDirectory: findCacheDir({
             name: 'react-scripts'
           }),
-          plugins: ['../babelRelayPlugin']
+          plugins: [path.join(__dirname, '..', 'babelRelayPlugin')]
         }
       },
       // "postcss" loader applies autoprefixer to our CSS.

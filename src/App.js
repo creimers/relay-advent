@@ -8,8 +8,10 @@ import Calendar from './Calendar'
 
 import Footer from './Footer'
 
+import config from 'config'
+
 Relay.injectNetworkLayer(
-  new Relay.DefaultNetworkLayer('http://localhost:8000/graphql')
+  new Relay.DefaultNetworkLayer(config.graphqlResource)
 );
 
 
