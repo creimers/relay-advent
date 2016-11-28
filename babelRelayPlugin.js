@@ -1,9 +1,9 @@
 var babelRelayPlugin   = require('babel-relay-plugin');
 var introspectionQuery = require('graphql/utilities').introspectionQuery;
 var request            = require('sync-request');
-import config from 'config'
+//var envconfig = require('envconfig')
 
-var graphqlHubUrl = config.graphqlResource
+var graphqlHubUrl = 'http://localhost:8001/graphql';
 var response = request('GET', graphqlHubUrl, {
   qs: {
     query: introspectionQuery
