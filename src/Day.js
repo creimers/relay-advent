@@ -8,6 +8,7 @@ import Relay from 'react-relay';
 
 import styles from './App.scss'
 
+
 class Day extends Component {
 
   constructor(props) {
@@ -19,7 +20,7 @@ class Day extends Component {
     this.canOpen = this.canOpen.bind(this)
     this.toggleDialog = this.toggleDialog.bind(this)
 
-    this.month = 11
+    this.month = 12
 
     let borderStyles = ['solid', 'dashed', 'dotted']
 
@@ -32,9 +33,8 @@ class Day extends Component {
 
   dayToMoment(day){
     day = day.split('_')[1]
-    let now = moment()
     let dayString = day.toString().length === 1? "0" + day : day
-    let dayAsString = `${now.year()}-${this.month}-${dayString}`
+    let dayAsString = `${this.props.year}-${this.month}-${dayString}`
     return moment(dayAsString)
   }
 

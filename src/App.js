@@ -8,10 +8,11 @@ import Calendar from './Calendar'
 
 import Footer from './Footer'
 
-import config from 'config'
+import envconfig from 'envconfig'
+
 
 Relay.injectNetworkLayer(
-  new Relay.DefaultNetworkLayer(config.graphqlResource)
+  new Relay.DefaultNetworkLayer(envconfig.graphqlResource)
 );
 
 

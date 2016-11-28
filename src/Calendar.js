@@ -10,6 +10,7 @@ import { Snackbar } from 'react-toolbox';
 
 import styles from './App.scss'
 
+
 class Calendar extends Component {
 
   constructor(props) {
@@ -48,6 +49,7 @@ class Calendar extends Component {
           <Day
             day={day.node}
             key={index}
+            year={this.props.calendar.year.split('_')[1]}
             openModalCallback={this.openModal}
             showSnackbarCallback={this.toggleSnackbar}
           />
@@ -83,6 +85,7 @@ Calendar = Relay.createContainer(Calendar, {
       fragment CALENDAR on CalendarNode {
         id
         uuid
+        year
         name
         days(first:25) {
           edges {
